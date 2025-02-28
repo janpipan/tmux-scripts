@@ -16,6 +16,7 @@ done
 
 # create new session
 tmux new-session -d -s $sessionName
+tmux send-keys C-z "nvim $PWD/clusters/" Enter
 
 # create new window for each session
 declare -i sessionNum=1
@@ -27,7 +28,5 @@ do
   sessionNum+=1
 done
 
-# close window 0
-tmux kill-window -t 0
 
 tmux attach-session -t $sessionName
